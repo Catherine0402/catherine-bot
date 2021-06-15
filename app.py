@@ -37,12 +37,21 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    """ Here's all the messages will be handled and processed by the program """
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
+    
+    
+    text=event.message.text
 
 
-if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    if (text=="Hi"):
+        reply_text = "Hello"
+    elif(text=="妳好"):
+        reply_text = "哈囉"
+    elif(text=="機器人"):
+        reply_text = "叫我嗎"
+    elif(text=="aaaa"):
+        reply_text = "bbbb"
+    elif:
+        reply_text = text
+#如果非以上的選項，就會學妳說話
+    message = TextSendMessage(reply_text)
+    line_bot_api.reply_message(event.reply_token, message)
